@@ -1,0 +1,11 @@
+@import "./base/reset";
+@import "./base/variables";
+
+
+body, form {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+}
