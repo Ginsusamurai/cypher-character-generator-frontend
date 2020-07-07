@@ -17,7 +17,7 @@ const App = props => {
     },[]);
 
   return (
-    <div>Hello fucking WORLD!
+    <div id="App">Hello fucking WORLD!
       <button onClick={() => props.test_it()}>I LIVE!</button>
       <button onClick={() => props.reset_me()}>I DIE!</button>
       <Option />

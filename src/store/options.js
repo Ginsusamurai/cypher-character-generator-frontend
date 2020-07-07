@@ -12,31 +12,66 @@ const initialState = {
 };
 
 export default (state = JSON.parse(JSON.stringify(initialState)), action) => {
-  let { type, payload } = action;
-
-  switch(type){
-    case "TEST":{
-      return produce(state, draftState => {
+  let {type, payload } = action;
+  return produce(state, draftState => {
+    switch(type){
+      case "TEST":{
         draftState.mysteryOption = 'i am a banana!';
-        draftState.typeArray[0].type_name = 'no thank you evil!';
-      })
+        draftState.typeArray[0].type_name = "no thank you";
+        break;
+      }
+      case "RESET":{
+        draftState = initialState;
+        break;
+      }
+      case "OPTION_FETCH_SUCCESS":{
+          console.log('feter', payload);
+          draftState.descriptorArray = payload.descriptorArray.reduce((acc,val,ind) => {
+            acc.push(val.descriptor_name);
+            return acc;
+          },[]);
+          draftState.typeArray = payload.typeArray.reduce((acc,val,ind) => {
+            acc.push(val.type_name);
+            return acc;
+          },[]);;
+          draftState.focusArray = payload.focusArray.reduce((acc,val,ind) => {
+            acc.push(val.focus_name);
+            return acc;
+          },[]);;
+        }
+      default:
+        return draftState;
     }
-    case "RESET":{
-      return initialState;
-    }
-    case "OPTION_FETCH_SUCCESS":{
-      console.log('feter', payload);
-      return produce(state, draftState => {
-        draftState.descriptorArray = payload.descriptorArray;
-        draftState.typeArray = payload.typeArray;
-        draftState.focusArray = payload.focusArray;
-      })
-    }
-    default:{
-      return state;
-    }
-  }
+  })
 }
+
+
+// export default (state = JSON.parse(JSON.stringify(initialState)), action) => {
+//   let { type, payload } = action;
+
+//   switch(type){
+//     case "TEST":{
+//       return produce(state, draftState => {
+//         draftState.mysteryOption = 'i am a banana!';
+//         draftState.typeArray[0].type_name = 'no thank you evil!';
+//       })
+//     }
+//     case "RESET":{
+//       return initialState;
+//     }
+//     case "OPTION_FETCH_SUCCESS":{
+//       console.log('feter', payload);
+//       return produce(state, draftState => {
+//         draftState.descriptorArray = payload.descriptorArray;
+//         draftState.typeArray = payload.typeArray;
+//         draftState.focusArray = payload.focusArray;
+//       })
+//     }
+//     default:{
+//       return state;
+//     }
+//   }
+// }
 
 // export const fetchOptions = async (endpoint) => dispatch => {
 //   let response = fetch(`${API}/${endpoint}`);

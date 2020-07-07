@@ -4,8 +4,10 @@ import thunk from 'redux-thunk';
 
 //import states
 import options from './options.js';
+import descriptors from './descriptors.js';
 
-let reducers = combineReducers({ options });
+
+let reducers = combineReducers({ options, descriptors });
 
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
