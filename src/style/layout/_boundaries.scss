@@ -1,0 +1,27 @@
+@import "../base/variables";
+
+.bound {
+  border-width: medium;
+  border-style: solid;
+  border-radius: 5px; 
+}
+
+.pri-bound {
+  border-color: $primary;
+}
+
+.sec-bound {
+  border-color: $secondary;
+}
+
+.might-bound {
+  border-color: $might;
+}
+
+.speed-bound {
+  border-color:speed;
+}
+
+.intellect-bound {
+  border-color:intellect;
+}
