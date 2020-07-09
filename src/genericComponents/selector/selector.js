@@ -1,15 +1,24 @@
 import React from 'react';
 
 const Selector = props => {
-  console.log('choices?', props.name, props.choices);
+
+  function setterUpdate(e){
+    let payload = {
+      selector: props.changetarget,
+      value: e.target.value, 
+    }
+    console.log('setterupdate', payload);
+    props.changefunction(payload);
+  }
+
 
   return (
     <>
       <label key={props.name} htmlFor={props.name}>{props.text}</label>
-      <select name={`${props.name}1`} id={props.name}>
+      <select onChange={props.changefunction ? setterUpdate : undefined} name={`${props.name}1`} id={props.name}>
         <option selected disabled>{props.default}</option>
         {props.choices.map((val, ind) => {
-          return <option key={ind} value={val}>{val}</option>
+          return <option  key={ind} value={val}>{val}</option>
         })}
       </select>
     </>
