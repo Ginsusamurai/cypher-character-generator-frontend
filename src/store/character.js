@@ -20,7 +20,7 @@ const initialState ={
   intellectPoolMax: "iMax",
   intellectEdge: "iEdge",
   edgeLimit: "eLim",
-  bonusPool: "bnsPool"
+  bonusPool: "bnsPool",
   xp:"xp#",
   recovery:{
     action:1, 
@@ -76,12 +76,12 @@ export default (state = JSON.parse(JSON.stringify(initialState)), action) => {
         break;
       }
       case "SET TYPE DETAILS":{
-        /*
-        draftState.mightPoolMax = payload.might,
-        draftState.speedPoolMax = payload.speed,
-        draftState.intellectPoolMax = payload.intellect,
-        draftState.effort = payload.effort,
-        draftState.bonusPool = payload.extra,
+        
+        draftState.mightPoolMax = payload.might;
+        draftState.speedPoolMax = payload.speed;
+        draftState.intellectPoolMax = payload.intellect;
+        draftState.effort = payload.effort;
+        draftState.bonusPool = payload.extra;
         [draftState.mightEdge,
           draftState.speedEdge,
           draftState.intellectEdge] = payload.edge.split("/");
@@ -92,10 +92,9 @@ export default (state = JSON.parse(JSON.stringify(initialState)), action) => {
         [draftState.weaponTraining.light,
           draftState.weaponTraining.medium,
           draftState.weaponTraining.heavy] = payload.weapons.split('/').reduce((acc,val) => {
-                                                                            acc.push(val !== 'x' ? true : false);
-                                                                            return acc;
-                                                                            },[])
-        */
+                                                  acc.push(val !== 'x' ? true : false);
+                                                  return acc;},[]);
+        
       }
       default:
         return draftState;

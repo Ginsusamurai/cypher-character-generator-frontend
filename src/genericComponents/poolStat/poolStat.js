@@ -1,10 +1,10 @@
 import React from 'react';
-
+import {If, Then} from "../if/if.js";
 
 
 const PoolStat = props => {
 
-  console.log('char',props);
+  console.log('char',`${props.stat}Edge`);
 
   return(
     <section className="layout border mainSize">
@@ -25,7 +25,18 @@ const PoolStat = props => {
           <div className="border label">POOL</div>
         </article>
         <article className="border statBottomBox center">
+          <If condition={props.character[`${props.stat.toLowerCase()}Edge`] === '?'}>
+            <Then >
+              <div className="border midline">+</div>
+            </ Then>
+          </If>
+
           <div className="border midline">{props.character[`${props.stat.toLowerCase()}Edge`]}</div>
+          <If condition={props.character[`${props.stat.toLowerCase()}Edge`] === '?'}>
+            <Then >
+              <div className="border midline">-</div>
+            </ Then>
+          </If>
           <div className="border label">EDGE</div>
         </article>
       </section>
