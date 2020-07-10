@@ -7,26 +7,26 @@ const PoolStat = props => {
   console.log('char',props);
 
   return(
-    <section class="layout border mainSize">
-      <section class="border auxStat statBottomBox">
-        <div class="border midline">{props.character[`${props.auxStat.toLowerCase()}`]}</div>
-        <article class="border label">{props.auxStat}</article>
+    <section className="layout border mainSize">
+      <section className="border auxStat statBottomBox">
+        <div className="border midline">{props.character[`${props.auxStat.toLowerCase()}`]}</div>
+        <article className="border label">{props.auxStat}</article>
       </section>
-      <section class="border midSection statBottomBox center">
-        <article class="border fit midline">+</article>
-        <article class="border fit midline">{props.character[`${props.stat.toLowerCase()}PoolMax`]}</article>
-        <article class="border fit midline">-</article>
-        <article class="border label">{props.stat}</article>
+      <section className="border midSection statBottomBox center">
+        <article className="border fit midline">+</article>
+        <article className="border fit midline">{props.character[`${props.stat.toLowerCase()}PoolMax`]}</article>
+        <article className="border fit midline">-</article>
+        <article className="border label">{props.stat}</article>
       </section>
         
-      <section class="border bottomSection">
-        <article class="border statBottomBox center">
-          <div class="border midline">{props.character[`${props.stat.toLowerCase()}Pool`]}</div>
-          <div class="border label">POOL</div>
+      <section className="border bottomSection">
+        <article className="border statBottomBox center">
+          <div className="border midline">{props.character[`${props.stat.toLowerCase()}Pool`]}</div>
+          <div className="border label">POOL</div>
         </article>
-        <article class="border statBottomBox center">
-          <div class="border midline">{props.character[`${props.stat.toLowerCase()}Edge`]}</div>
-          <div class="border label">EDGE</div>
+        <article className="border statBottomBox center">
+          <div className="border midline">{props.character[`${props.stat.toLowerCase()}Edge`]}</div>
+          <div className="border label">EDGE</div>
         </article>
       </section>
     </section>

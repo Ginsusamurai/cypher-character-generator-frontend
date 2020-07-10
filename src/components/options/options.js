@@ -9,19 +9,14 @@ import { If, Then } from '../../genericComponents/if/if.js';
 //store
 import { tester, reset, fetchOptions  } from '../../store/options.js';
 import { setName, setSelector } from '../../store/character.js';
+import { fetchDescriptorDetails,fetchTypeDetails,fetchFocusDetails } from '../../store/optionDetails.js';
+// import { fetchTypeDetails } from '../../store/typeDetails.js';
+// import { fetchFocusDetails } from '../../store/focusDetails.js';
 
 require('dotenv').config();
 const OPTIONS_ENDPOINT = process.env.REACT_APP_OPTIONS_ENDPOINT;
 
 const Options = props => {
-
-  let descriptors;
-  let types;
-  let foci;
-
-  let testArray = ['dog', 'cat', 'van'];
-  let name = 'beHOLD';
-  let text = 'I am a ';
 
   function nameUpdate(e){
     props.set_name(e.target.value);
@@ -37,9 +32,9 @@ const Options = props => {
       {/* <If condition={props.descriptors?.length > 1} > */}
         <Then>
           {/* <Selector choices={props.descriptors} name={"descriptor"} text={"I am a "}/> */}
-           <Selector choices={props.options?.descriptorArray} default={"Adjective"} name={"descriptor"} text={"I am a "} changefunction={props.set_selector} changetarget={"descriptor"}/>
-           <Selector choices={props.options?.typeArray} default={"Noun"} name={"type"} text={", "} changefunction={props.set_selector} changetarget={"type"}/>
-           <Selector choices={props.options?.focusArray} default={"Verbs"} name={"focus"} text={" that "} changefunction={props.set_selector} changetarget={"focus"}/>
+           <Selector choices={props.options?.descriptorArray} default={"Adjective"} name={"descriptor"} text={"I am a "} changefunction={props.set_selector} changetarget={"descriptor"} getDetails={props.get_descriptorDetails}/>
+           <Selector choices={props.options?.typeArray} default={"Noun"} name={"type"} text={", "} changefunction={props.set_selector} changetarget={"type"} getDetails={props.get_typeDetails}/>
+           <Selector choices={props.options?.focusArray} default={"Verbs"} name={"focus"} text={" that "} changefunction={props.set_selector} changetarget={"focus"} getDetails={props.get_focusDetails}/>
         </Then>
       </If>
       
@@ -54,8 +49,10 @@ const Options = props => {
 
 const mapStateToProps = state => ({
   options: state.options,
-  descriptors: state.descriptors,
-  character: state.character
+  character: state.character,
+  descriptorDetails: state.descriptorDetails,
+  typeDetails: state.typeDetails,
+  focusDetails: state.focusDetails,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -63,7 +60,10 @@ const mapDispatchToProps = (dispatch) => ({
   test_it: () => dispatch(tester()),
   get_options: (endpoint) => dispatch(fetchOptions(endpoint)),
   set_name:(name) => dispatch(setName(name)),
-  set_selector: (payload) => dispatch(setSelector(payload))
+  set_selector: (payload) => dispatch(setSelector(payload)),
+  get_descriptorDetails: (payload) => dispatch(fetchDescriptorDetails(payload)),
+  get_typeDetails: (payload) => dispatch(fetchTypeDetails(payload)),
+  get_focusDetails: (payload) => dispatch(fetchFocusDetails(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Options)

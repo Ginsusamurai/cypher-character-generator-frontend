@@ -19,6 +19,8 @@ const initialState ={
   intellectPool: "iCur",
   intellectPoolMax: "iMax",
   intellectEdge: "iEdge",
+  edgeLimit: "eLim",
+  bonusPool: "bnsPool"
   xp:"xp#",
   recovery:{
     action:1, 
@@ -43,13 +45,20 @@ const initialState ={
     total: 0,
     },
   abilities:[],
+  abilityLimit:"abLim",
   attacks:[],
+  weaponTraining:{
+    light: null,
+    medium: null,
+    heavy: null
+  },
   cyphers:{
     cypherList:[],
     cypherLimit: "null",
     cypherCount: 0,
   },
   equipment:[],
+  equipmentDescription:"eqDesc",
   armor: "null",
   money: "null"
 }
@@ -65,6 +74,28 @@ export default (state = JSON.parse(JSON.stringify(initialState)), action) => {
       case "SET SELECTOR": {
         draftState[payload.selector] = payload.value;
         break;
+      }
+      case "SET TYPE DETAILS":{
+        /*
+        draftState.mightPoolMax = payload.might,
+        draftState.speedPoolMax = payload.speed,
+        draftState.intellectPoolMax = payload.intellect,
+        draftState.effort = payload.effort,
+        draftState.bonusPool = payload.extra,
+        [draftState.mightEdge,
+          draftState.speedEdge,
+          draftState.intellectEdge] = payload.edge.split("/");
+          draftState.edgeLimit = payload.edge_limit;
+        draftState.cyphers.cypherLimit = payload.cypher;
+        draftState.abilityLimit = payload.abilities;
+        draftState.equipmentDescription = payload.starting_items;
+        [draftState.weaponTraining.light,
+          draftState.weaponTraining.medium,
+          draftState.weaponTraining.heavy] = payload.weapons.split('/').reduce((acc,val) => {
+                                                                            acc.push(val !== 'x' ? true : false);
+                                                                            return acc;
+                                                                            },[])
+        */
       }
       default:
         return draftState;

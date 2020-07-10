@@ -9,6 +9,7 @@ const Selector = props => {
     }
     console.log('setterupdate', payload);
     props.changefunction(payload);
+    props.getDetails && props.getDetails(payload.value);
   }
 
 

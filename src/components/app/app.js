@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { tester, reset, fetchOptions } from '../../store/options.js';
 import Option from '../options/options.js';
-import descriptors from '../../store/descriptorDetails.js';
+import optionDetails from '../../store/optionDetails.js';
 import Stats from '../stats/stats.js';
 
 const OPTIONS_ENDPOINT = process.env.REACT_APP_OPTIONS_ENDPOINT;
@@ -43,7 +43,7 @@ const App = props => {
 
 const mapStateToProps = state => ({
   options: state.options,
-  descriptors: state.descriptors,
+  optionDetails: state.optionDetails,
 })
 
 const mapDispatchToProps = (dispatch) => ({
