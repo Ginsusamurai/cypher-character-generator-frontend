@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cypher-character-generator-frontend/precache-manifest.01cc7ee9286d22a6b2450b0bf33b5bb7.js"
+  "/cypher-character-generator-frontend/precache-manifest.d8d4c8a75bb8bc7edd171beac1b1820c.js"
 );
 
 self.addEventListener('message', (event) => {
