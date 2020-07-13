@@ -32,11 +32,13 @@ const PoolStat = props => {
           </If>
 
           <div className="border midline">{props.character[`${props.stat.toLowerCase()}Edge`]}</div>
+          
           <If condition={props.character[`${props.stat.toLowerCase()}Edge`] === '?'}>
             <Then >
               <div className="border midline">-</div>
             </ Then>
           </If>
+          
           <div className="border label">EDGE</div>
         </article>
       </section>
