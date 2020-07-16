@@ -13,9 +13,9 @@ const PoolStat = props => {
         <article className="border label">{props.auxStat}</article>
       </section>
       <section className="border midSection statBottomBox center">
-        <article className="border fit midline">+</article>
+        <button className="border fit midline incrementor statButton">+</button>
         <article className="border fit midline">{props.character[`${props.stat.toLowerCase()}PoolMax`]}</article>
-        <article className="border fit midline">-</article>
+        <button className="border fit midline decrementor statButton">—</button>
         <article className="border label">{props.stat}</article>
       </section>
         
@@ -27,15 +27,15 @@ const PoolStat = props => {
         <article className="border statBottomBox center">
           <If condition={props.character[`${props.stat.toLowerCase()}Edge`] === '?'}>
             <Then >
-              <div className="border midline">+</div>
+              <button className="border fit midline incrementor statButton">+</button>
             </ Then>
           </If>
 
-          <div className="border midline">{props.character[`${props.stat.toLowerCase()}Edge`]}</div>
+          <div className="border fit midline">{props.character[`${props.stat.toLowerCase()}Edge`]}</div>
           
           <If condition={props.character[`${props.stat.toLowerCase()}Edge`] === '?'}>
             <Then >
-              <div className="border midline">-</div>
+              <button className="border fit midline decrementor statButton">—</button>
             </ Then>
           </If>
           

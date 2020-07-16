@@ -8,11 +8,13 @@ const Stats = props => {
 
 
   return(
+    <>
     <div className="basicsComplete stats bound">
       <PoolStat character={props.character} stat="MIGHT" auxStat="TIER"/>
       <PoolStat character={props.character} stat="SPEED" auxStat="EFFORT"/>
       <PoolStat character={props.character} stat="INTELLECT" auxStat="XP"/>
     </div>
+    </>
   )
 }
 
