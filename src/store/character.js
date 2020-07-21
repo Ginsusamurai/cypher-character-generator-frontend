@@ -11,13 +11,16 @@ const initialState ={
   tier: "tierish",
   effort: "eff",
   mightPool: "mCur",
+  mightPoolBonus: "mBns",
   mightPoolMax: "mMax",
   mightEdge: "mEdge",
   speedPool: "sCur",
   speedPoolMax: "sMax",
+  speedPoolBonus: "sBns",
   speedEdge: "sEdge",
   intellectPool: "iCur",
   intellectPoolMax: "iMax",
+  intellectPoolBonus: "iBns",
   intellectEdge: "iEdge",
   edgeLimit: "eLim",
   bonusPool: "bnsPool",
@@ -95,6 +98,41 @@ export default (state = JSON.parse(JSON.stringify(initialState)), action) => {
                                                   acc.push(val !== 'x' ? true : false);
                                                   return acc;},[]);
         
+      }
+      case "COMPUTE POOLS":{
+
+        let [mBonus, sBonus, iBonus] = [0,0,0];
+        
+        if(state.optionDetails?.length > 0){
+
+         let y = state.optionDetails.descriptorDetails?.forEach((descriptor) =>{
+            if(descriptor.descriptor_skill_type === "might pool"){
+              mBonus += descriptor.descriptor_skill_value;
+            }
+            if(descriptor.descriptor_skill_type === "speed pool"){
+              sBonus += descriptor.descriptor_skill_value;
+            }
+            if(descriptor.descriptor_skill_type === "int pool"){
+              iBonus += descriptor.descriptor_skill_value;
+            }
+          })
+          
+        } 
+
+        draftState.mightPoolBonus = mBonus;
+        draftState.speedPoolBonus = sBonus;
+        draftState.intellectPoolBonus = iBonus;
+      }
+      case "ASSEMBLE SKILLS":{
+        let skills = [];
+        if(state.optionDetails.length > 0){
+        let y = state.optionDetails.descriptorDetails?.forEach((_val) =>{
+            if(_val.descriptor_skill_type === "skill"){
+              skills.push(_val.descriptor_skill_value);
+            }
+          })
+          
+        }
       }
       default:
         return draftState;

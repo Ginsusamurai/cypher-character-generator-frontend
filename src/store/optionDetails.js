@@ -11,7 +11,8 @@ const TYPE_ENDPOINT = process.env.REACT_APP_TYPE_ENDPOINT;
 const initialState = {
   descriptorDetails:[],
   typeDetails:{},
-  focusDetails:[]
+  focusDetails:[],
+  focusSkills:[],
 };
 
 export default (state = JSON.parse(JSON.stringify(initialState)), action) => {
